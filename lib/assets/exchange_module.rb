@@ -1,7 +1,13 @@
 module Exchange
-  class TimeKeeper
-    DEFAULT_TIME_ZONE = 'Asia/Tokyo'
+  DEFAULT_TIME_ZONE = 'Asia/Tokyo'
 
+  class DayChecker
+    def self.is_available_wday?(today)
+      return !today.saturday? && !today.sunday?
+    end
+  end
+
+  class TimeChecker
     DEFAULT_START_TIME_HOUR = 9.hour;
     DEFAULT_END_TIME_HOUR = 24.hour;
 

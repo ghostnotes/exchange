@@ -13,7 +13,11 @@ namespace :currency_exchange_rate do
   private
 
   def send_test_email
-    unless Exchange::TimeKeeper.is_available_time?
+    unless Exchange::DayChecker.is_available_wday?(Date.today)
+      return
+    end
+
+    unless Exchange::TimeChecker.is_available_time?
       return
     end
 
